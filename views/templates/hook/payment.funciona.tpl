@@ -34,7 +34,7 @@
           });
           var installments = (Culqi.token.metadata.installments == undefined) ? 1 : Culqi.token.metadata.installments;
           $.ajax({
-              url: fnReplace("http://localhost:8080/es/module/culqi/chargeajax"),
+              url: fnReplace("http://{/literal}{$smarty.server.HTTP_HOST}{literal}/es/module/culqi/chargeajax"),
               data: {
                 ajax: true,
                 action: 'displayAjax',

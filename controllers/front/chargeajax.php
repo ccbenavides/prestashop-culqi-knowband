@@ -15,4 +15,4 @@ class CulqiChargeAjaxModuleFrontController extends ModuleFrontController
     die(Tools::jsonEncode($result));
   }
 
-}
+} 

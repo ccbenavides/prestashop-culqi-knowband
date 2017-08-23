@@ -38,7 +38,7 @@
           });
           var installments = (Culqi.token.metadata.installments == undefined) ? 1 : Culqi.token.metadata.installments;
           $.ajax({
-              url: fnReplace("http://{/literal}{$smarty.server.HTTP_HOST}{literal}/es/module/culqi/chargeajax"),
+              url: fnReplace("http://{/literal}{$smarty.server.HTTP_HOST}{literal}/module/culqi/chargeajax"),
               data: {
                 ajax: true,
                 action: 'displayAjax',
@@ -96,7 +96,7 @@
       }
 
       function redirect() {
-          var url = fnReplace("http://{/literal}{$smarty.server.HTTP_HOST}{literal}/es/module/culqi/postpayment");
+          var url = fnReplace("http://{/literal}{$smarty.server.HTTP_HOST}{literal}/module/culqi/postpayment");
           location.href = url;
       }
 
