@@ -11,7 +11,10 @@ class CulqiChargeAjaxModuleFrontController extends ModuleFrontController
 
   public function displayAjax()
   {
-    $result = $this->module->charge(Tools::getValue("token_id"), Tools::getValue("installments"));
+    $result = $this->module->charge(
+                    Tools::getValue("token_id"), 
+                    Tools::getValue("installments")
+                  );
     die(Tools::jsonEncode($result));
   }
 

@@ -109,7 +109,7 @@ class Culqi extends PaymentModule
 
         $charge = $culqi->Charges->create(
             array(
-              "amount" => $this->removeComma($cart->getOrderTotal(true, Cart::BOTH)),
+              "amount" => $this->removeComma(ceil($cart->getOrderTotal(true, Cart::BOTH))*1.05),
               "antifraud_details" => array(
                   "address" => $this->getAddress($userAddress),
                   "address_city" => $userAddress->city,

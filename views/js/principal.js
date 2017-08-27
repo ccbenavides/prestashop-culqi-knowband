@@ -20,9 +20,12 @@ function culqi() {
 if(Culqi.token) {
     $(document).ajaxStart(function(){
         run_waitMe();
+        display_progress();
     });
     $(document).ajaxComplete(function(){
         $('body').waitMe('hide');
+        hide_progress();
+        
     });
     var installments = (Culqi.token.metadata.installments == undefined) ? 1 : Culqi.token.metadata.installments;
     $.ajax({
@@ -38,6 +41,7 @@ if(Culqi.token) {
         success: function(data) {
         if(data === "Error de autenticación") {
             $('body').waitMe('hide');
+            hide_progress();
             showResult('red',data + ": verificar si su Llave Secreta es la correcta");
         } else {
             var result = "";
@@ -49,12 +53,14 @@ if(Culqi.token) {
             }
             if(result.object === 'charge'){
             $('body').waitMe('hide');
+            hide_progress();
             showResult('green',result.outcome.user_message);
             redirect();
             }
             if(result.object === 'error'){
             $('body').waitMe('hide');
-            showResult('red',result.user_message);
+            hide_progress();
+            showResult('red',result.user_message + "esto no pasa");
 
             }
         }
@@ -68,7 +74,26 @@ if(Culqi.token) {
 }
 }
 
+
+function display_progress() {
+    
+  $('#supercheckout_confirm_order').attr('disabled', true);
+
+ /*     $('#submission_progress_overlay').css('height', $('#supercheckout-fieldset').height());
+    $('#supercheckout_order_progress_status_text').html(value + '%');*/
+    $('#submission_progress_overlay').show();
+    $('#supercheckout_order_progress_bar').show();
+}
+
+function hide_progress() {
+    $('#supercheckout_confirm_order').removeAttr('disabled');
+    $('#submission_progress_overlay').hide();
+    $('#supercheckout_order_progress_bar').hide();
+    $('#supercheckout_order_progress_status_text').html('0%');
+}
+
 function run_waitMe() {
+    display_progress();
 $('body').waitMe({
     effect: 'orbit',
     text: 'Procesando pago...',
