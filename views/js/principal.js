@@ -62,16 +62,16 @@ if(Culqi.token) {
             hide_progress();
             showResult('red',result.user_message + "esto no pasa");
 
+                    }
+                }
             }
-        }
-        }
-    });
-} else {
+        });
+    } else {
     $('body').waitMe('hide');
             if(Culqi.error != undefined) {
                 showResult('red',Culqi.error.user_message);
             }
-}
+    }
 }
 
 

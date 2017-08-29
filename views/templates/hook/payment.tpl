@@ -20,15 +20,19 @@
       if(method_option === "culqi"){
         alert(culqi);
       }*/
-      Culqi.publicKey = '{/literal}{$llave_publica|escape:'htmlall':'UTF-8'}{literal}';
+     // if(!Culqi){
+        Culqi.publicKey = '{/literal}{$llave_publica|escape:'htmlall':'UTF-8'}{literal}';
 
-      Culqi.settings({
-  			title: 'Venta',
-  			currency: 'PEN',
-  			description: '{/literal}{$descripcion|escape:'htmlall':'UTF-8'}{literal}',
-  			// amount: ({/literal}{$total|escape:'htmlall':'UTF-8'}{literal})*100
-         amount : parseInt($("#total_price").text().trim().replace("S/. ", "")*100).toString()
-      });
+        Culqi.settings({
+          title: 'Venta',
+          currency: 'PEN',
+          description: '{/literal}{$descripcion|escape:'htmlall':'UTF-8'}{literal}',
+          // amount: ({/literal}{$total|escape:'htmlall':'UTF-8'}{literal})*100
+          amount : parseInt($("#total_price").text().trim().replace("S/. ", "")*100).toString()
+        });
+       // console.log("llega aqui una vez")
+        console.log(Culqi);
+      //}
 
 
       // Process to Pay
