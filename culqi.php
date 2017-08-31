@@ -153,7 +153,7 @@ class Culqi extends PaymentModule
         );
 
         $newOption->setModuleName($this->name)
-                ->setCallToActionText($this->trans('Pagar con tarjeta de credito', array(), 'culqi'))
+                ->setCallToActionText($this->trans('Pagar con tarjeta de credito', array(), 'Pagar con tarjeta de credito'))
                 ->setAction($this->context->link->getModuleLink($this->name, 'postpayment', array(), true))
                 ->setAdditionalInformation($this->context->smarty->fetch('module:culqi/views/templates/hook/payment.tpl'))
                 ->setLogo(Media::getMediaPath(_PS_MODULE_DIR_.$this->name.'/views/img/logo_culqi.png'));

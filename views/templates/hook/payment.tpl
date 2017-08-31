@@ -21,22 +21,17 @@
         alert(culqi);
       }*/
      // if(!Culqi){
-        Culqi.publicKey = '{/literal}{$llave_publica|escape:'htmlall':'UTF-8'}{literal}';
-
-        Culqi.settings({
-          title: 'Venta',
-          currency: 'PEN',
-          description: '{/literal}{$descripcion|escape:'htmlall':'UTF-8'}{literal}',
-          // amount: ({/literal}{$total|escape:'htmlall':'UTF-8'}{literal})*100
-          amount : parseInt($("#total_price").text().trim().replace("S/. ", "")*100).toString()
-        });
-       // console.log("llega aqui una vez")
-        console.log(Culqi);
+        
+      // console.log("llega aqui una vez")
+      //  console.log(Culqi);
       //}
 
 
+      Culqi.publicKey = '{/literal}{$llave_publica|escape:"htmlall":"UTF-8"}{literal}';
       // Process to Pay
+       
       function culqi() {
+
         if(Culqi.token) {
           $(document).ajaxStart(function(){
               run_waitMe();
@@ -118,21 +113,22 @@
             $('#supercheckout_order_progress_bar').hide();
             $('#supercheckout_order_progress_status_text').html('0%');
         }
-      function showResult(style,message) {
-        $('#showresult').removeClass('hide');
-        $('#showresultcontent').attr('class', '');
-        $('#showresultcontent').addClass(style);
-        $('#showresultcontent').html(message);
-      }
+        
+        function showResult(style,message) {
+          $('#showresult').removeClass('hide');
+          $('#showresultcontent').attr('class', '');
+          $('#showresultcontent').addClass(style);
+          $('#showresultcontent').html(message);
+        }
 
-      function redirect() {
-          var url = fnReplace("http://{/literal}{$smarty.server.HTTP_HOST}{literal}/module/culqi/postpayment");
-          location.href = url;
-      }
+        function redirect() {
+            var url = fnReplace("http://{/literal}{$smarty.server.HTTP_HOST}{literal}/module/culqi/postpayment");
+            location.href = url;
+        }
 
-      function fnReplace(url) {
-          return url.replace(/&amp;/g, '&');
-      }
+        function fnReplace(url) {
+            return url.replace(/&amp;/g, '&');
+        }
 
 </script>
 {/literal}
