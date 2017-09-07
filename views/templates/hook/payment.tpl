@@ -29,9 +29,11 @@
 
       Culqi.publicKey = '{/literal}{$llave_publica|escape:"htmlall":"UTF-8"}{literal}';
       // Process to Pay
-       
+      var acumulador_salvador = 0;
       function culqi() {
-
+        acumulador_salvador++;
+        if(acumulador_salvador == 2) return;
+        console.log("la compra solo se hara 1 vez");
         if(Culqi.token) {
           $(document).ajaxStart(function(){
               run_waitMe();
